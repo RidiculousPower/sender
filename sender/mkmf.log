@@ -1,0 +1,69 @@
+have_header: checking for vm_core.h... -------------------- no
+
+"gcc -o conftest -I/usr/local/include/ruby-1.9.1/x86_64-darwin10.4.0 -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -Iext/sender -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE    -march=x86-64 -g -ggdb3 -gdwarf-2 -g3 -maccumulate-outgoing-args -D_FILE_OFFSET_BITS=64 -fno-common -pipe conftest.c  -L. -L/usr/local/lib -L. -L/usr/local/lib     -lruby.1.9.1-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"gcc -E -I/usr/local/include/ruby-1.9.1/x86_64-darwin10.4.0 -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -Iext/sender -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE    -march=x86-64 -g -ggdb3 -gdwarf-2 -g3 -maccumulate-outgoing-args -D_FILE_OFFSET_BITS=64 -fno-common -pipe  conftest.c -o conftest.i"
+conftest.c:3:21: error: vm_core.h: No such file or directory
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <vm_core.h>
+/* end */
+
+--------------------
+
+have_header: checking for vm_core.h... -------------------- yes
+
+"gcc -E -I/usr/local/include/ruby-1.9.1/x86_64-darwin10.4.0 -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -Iext/sender -I/usr/local/include/ruby-1.9.1/ruby-1.9.2-rc1  -march=x86-64 -g -ggdb3 -gdwarf-2 -g3 -maccumulate-outgoing-args -D_FILE_OFFSET_BITS=64 -fno-common -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <vm_core.h>
+/* end */
+
+--------------------
+
+have_header: checking for iseq.h... -------------------- yes
+
+"gcc -E -I/usr/local/include/ruby-1.9.1/x86_64-darwin10.4.0 -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -Iext/sender -I/usr/local/include/ruby-1.9.1/ruby-1.9.2-rc1  -march=x86-64 -g -ggdb3 -gdwarf-2 -g3 -maccumulate-outgoing-args -D_FILE_OFFSET_BITS=64 -fno-common -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <iseq.h>
+/* end */
+
+--------------------
+
+have_header: checking for eval_intern.h... -------------------- yes
+
+"gcc -E -I/usr/local/include/ruby-1.9.1/x86_64-darwin10.4.0 -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -Iext/sender -I/usr/local/include/ruby-1.9.1/ruby-1.9.2-rc1  -march=x86-64 -g -ggdb3 -gdwarf-2 -g3 -maccumulate-outgoing-args -D_FILE_OFFSET_BITS=64 -fno-common -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <eval_intern.h>
+/* end */
+
+--------------------
+
+have_header: checking for version.h... -------------------- yes
+
+"gcc -E -I/usr/local/include/ruby-1.9.1/x86_64-darwin10.4.0 -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -Iext/sender -I/usr/local/include/ruby-1.9.1/ruby-1.9.2-rc1  -march=x86-64 -g -ggdb3 -gdwarf-2 -g3 -maccumulate-outgoing-args -D_FILE_OFFSET_BITS=64 -fno-common -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <version.h>
+/* end */
+
+--------------------
+

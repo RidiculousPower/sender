@@ -1,0 +1,340 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		84926DDE11D05DB800C93686 /* sender */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 84926DF011D05DF200C93686 /* Build configuration list for PBXAggregateTarget "sender" */;
+			buildPhases = (
+				84926DDD11D05DB800C93686 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = sender;
+			productName = extconf.rb;
+		};
+		84C3604511D1CDEF0003E4D8 /* XCodeSenderTest */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 84C3605011D1CE170003E4D8 /* Build configuration list for PBXAggregateTarget "XCodeSenderTest" */;
+			buildPhases = (
+			);
+			dependencies = (
+				84C3604B11D1CDF50003E4D8 /* PBXTargetDependency */,
+				84C3604911D1CDF50003E4D8 /* PBXTargetDependency */,
+			);
+			name = XCodeSenderTest;
+			productName = XCodeSenderTest;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		84C3604411D1CC930003E4D8 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 84C3603A11D1CC5B0003E4D8 /* main.c */; };
+		84C3606111D1CE760003E4D8 /* libruby.1.9.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C3605D11D1CE4E0003E4D8 /* libruby.1.9.1.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84C3604811D1CDF50003E4D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84C3603D11D1CC890003E4D8;
+			remoteInfo = RPSenderTest;
+		};
+		84C3604A11D1CDF50003E4D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84926DDE11D05DB800C93686;
+			remoteInfo = sender;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		84BD34C811D96E2400119728 /* rb_Kernel_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rb_Kernel_internal.h; path = ../sender/ext/sender/rb_Kernel_internal.h; sourceTree = SOURCE_ROOT; };
+		84C35F8911D1641E0003E4D8 /* sender.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sender.c; path = ../sender/ext/sender/sender.c; sourceTree = SOURCE_ROOT; };
+		84C35F8B11D1641E0003E4D8 /* rb_Global.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rb_Global.c; path = ../sender/ext/sender/rb_Global.c; sourceTree = SOURCE_ROOT; };
+		84C35F8C11D1641E0003E4D8 /* rb_Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rb_Global.h; path = ../sender/ext/sender/rb_Global.h; sourceTree = SOURCE_ROOT; };
+		84C35F8D11D1641E0003E4D8 /* RubySourceSupport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = RubySourceSupport.c; path = ../sender/ext/sender/RubySourceSupport.c; sourceTree = SOURCE_ROOT; };
+		84C35F8E11D1641E0003E4D8 /* RubySourceSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubySourceSupport.h; path = ../sender/ext/sender/RubySourceSupport.h; sourceTree = SOURCE_ROOT; };
+		84C3601311D1C96B0003E4D8 /* RPSender_internal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = RPSender_internal.c; path = ../sender/ext/sender/RPSender_internal.c; sourceTree = SOURCE_ROOT; };
+		84C3601411D1C96B0003E4D8 /* RPSender_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPSender_internal.h; path = ../sender/ext/sender/RPSender_internal.h; sourceTree = SOURCE_ROOT; };
+		84C3601511D1C9740003E4D8 /* rb_Kernel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rb_Kernel.c; path = ../sender/ext/sender/rb_Kernel.c; sourceTree = SOURCE_ROOT; };
+		84C3601611D1C9740003E4D8 /* rb_Kernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rb_Kernel.h; path = ../sender/ext/sender/rb_Kernel.h; sourceTree = SOURCE_ROOT; };
+		84C3603A11D1CC5B0003E4D8 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		84C3603E11D1CC890003E4D8 /* RPSenderTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RPSenderTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C3605D11D1CE4E0003E4D8 /* libruby.1.9.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libruby.1.9.1.dylib; path = /usr/local/lib/libruby.1.9.1.dylib; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84C3603C11D1CC890003E4D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C3606111D1CE760003E4D8 /* libruby.1.9.1.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* RPRuby_SenderCaller */ = {
+			isa = PBXGroup;
+			children = (
+				84C3603A11D1CC5B0003E4D8 /* main.c */,
+				84C3603911D1CC420003E4D8 /* sender */,
+				84C3605D11D1CE4E0003E4D8 /* libruby.1.9.1.dylib */,
+				84C3603F11D1CC890003E4D8 /* Products */,
+			);
+			name = RPRuby_SenderCaller;
+			sourceTree = "<group>";
+		};
+		84C3603911D1CC420003E4D8 /* sender */ = {
+			isa = PBXGroup;
+			children = (
+				84C35F8911D1641E0003E4D8 /* sender.c */,
+				84C3601311D1C96B0003E4D8 /* RPSender_internal.c */,
+				84C3601411D1C96B0003E4D8 /* RPSender_internal.h */,
+				84C35F8B11D1641E0003E4D8 /* rb_Global.c */,
+				84C35F8C11D1641E0003E4D8 /* rb_Global.h */,
+				84C3601511D1C9740003E4D8 /* rb_Kernel.c */,
+				84C3601611D1C9740003E4D8 /* rb_Kernel.h */,
+				84BD34C811D96E2400119728 /* rb_Kernel_internal.h */,
+				84C35F8D11D1641E0003E4D8 /* RubySourceSupport.c */,
+				84C35F8E11D1641E0003E4D8 /* RubySourceSupport.h */,
+			);
+			name = sender;
+			sourceTree = "<group>";
+		};
+		84C3603F11D1CC890003E4D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84C3603E11D1CC890003E4D8 /* RPSenderTest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84C3603D11D1CC890003E4D8 /* RPSenderTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84C3604311D1CC8A0003E4D8 /* Build configuration list for PBXNativeTarget "RPSenderTest" */;
+			buildPhases = (
+				84C3603B11D1CC890003E4D8 /* Sources */,
+				84C3603C11D1CC890003E4D8 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RPSenderTest;
+			productName = RPSenderTest;
+			productReference = 84C3603E11D1CC890003E4D8 /* RPSenderTest */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB919308733D9F0010E9CD /* Build configuration list for PBXProject "RPRuby_Sender" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* RPRuby_SenderCaller */;
+			productRefGroup = 84C3603F11D1CC890003E4D8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84926DDE11D05DB800C93686 /* sender */,
+				84C3603D11D1CC890003E4D8 /* RPSenderTest */,
+				84C3604511D1CDEF0003E4D8 /* XCodeSenderTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84926DDD11D05DB800C93686 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ../sender\n#rake cultivate\nrake";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84C3603B11D1CC890003E4D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C3604411D1CC930003E4D8 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84C3604911D1CDF50003E4D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84C3603D11D1CC890003E4D8 /* RPSenderTest */;
+			targetProxy = 84C3604811D1CDF50003E4D8 /* PBXContainerItemProxy */;
+		};
+		84C3604B11D1CDF50003E4D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84926DDE11D05DB800C93686 /* sender */;
+			targetProxy = 84C3604A11D1CDF50003E4D8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB919408733D9F0010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		1DEB919508733D9F0010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		84926DDF11D05DB800C93686 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = extconf.rb;
+			};
+			name = Debug;
+		};
+		84926DE011D05DB800C93686 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = extconf.rb;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		84C3604111D1CC8A0003E4D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = RPSenderTest;
+			};
+			name = Debug;
+		};
+		84C3604211D1CC8A0003E4D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = RPSenderTest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		84C3604611D1CDEF0003E4D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = XCodeSenderTest;
+			};
+			name = Debug;
+		};
+		84C3604711D1CDEF0003E4D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = XCodeSenderTest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB919308733D9F0010E9CD /* Build configuration list for PBXProject "RPRuby_Sender" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB919408733D9F0010E9CD /* Debug */,
+				1DEB919508733D9F0010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84926DF011D05DF200C93686 /* Build configuration list for PBXAggregateTarget "sender" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84926DDF11D05DB800C93686 /* Debug */,
+				84926DE011D05DB800C93686 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84C3604311D1CC8A0003E4D8 /* Build configuration list for PBXNativeTarget "RPSenderTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C3604111D1CC8A0003E4D8 /* Debug */,
+				84C3604211D1CC8A0003E4D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84C3605011D1CE170003E4D8 /* Build configuration list for PBXAggregateTarget "XCodeSenderTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C3604611D1CDEF0003E4D8 /* Debug */,
+				84C3604711D1CDEF0003E4D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
