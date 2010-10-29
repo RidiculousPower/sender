@@ -1,0 +1,321 @@
+== Sender
+
+http://rubygems.org/gems/sender
+
+== DESCRIPTION:
+
+Adds :__sender__ and :__caller__ to the built-in :__callee__ and :__method__ methods in Ruby 1.9.1.
+
+Also provides object-oriented :backtrace supporting n-levels backward, :each_backtrace_frame for iteration, :backtrace_includes?, 
+and :backtrace_includes_one_of? for context inspection, and :backtrace_frame_with and :backtrace_frames_with, which return
+matching frame information for the frame(s) matching the given description.
+
+== SUMMARY:
+	
+	Adds object-oriented backtrace, which returns :object, :method, :line, and :file for each stack frame,
+	and which permits queries regarding backtrace contents.
+	
+	* __sender__
+	* __caller__
+	* backtrace
+	* backtrace( frames_to_trace_backward )
+	* each_backtrace_frame
+	* each_backtrace_frame( frames_to_trace_backward )
+	* backtrace_includes?( Class, class_instance, :symbol, {frame_hash}, ... )
+	* backtrace_includes?( frames_to_trace_backward, Class, class_instance, :symbol, {frame_hash}, ... )
+	* backtrace_includes_one_of?( Class, class_instance, :symbol, {frame_hash}, ... )
+	* backtrace_includes_one_of?( frames_to_trace_backward, Class, class_instance, :symbol, {frame_hash}, ... )
+	* backtrace_frame_with( Class, class_instance, :symbol, {frame_hash}, ... )
+	* backtrace_frame_with( frames_to_trace_backward, Class, class_instance, :symbol, {frame_hash}, ... )
+	* backtrace_frames_with( Class, class_instance, :symbol, {frame_hash}, ... )
+	* backtrace_frames_with( frames_to_trace_backward, Class, class_instance, :symbol, {frame_hash}, ... )
+
+== INSTALL:
+
+	* sudo gem install sender
+
+== EXAMPLE:
+
+	require 'sender'
+	require 'pp'
+
+	class Test
+
+		def initialize
+			puts 'In method <Test>:initialize'
+			puts 'Sender was: ' + __sender__.pretty_inspect.to_s
+			puts 'Caller was: ' + __caller__.to_s
+		end
+
+		def test
+			puts 'In <Test>:test'
+			self.another_test
+		end
+
+		def another_test
+			puts 'In method <Test>:another_test'
+			test2 = Test2.new
+			test2.and_another_test_in_another_object
+		end
+
+		def and_another_test_in_another_object
+			puts 'In method <Test>:and_another_test_in_another_object'
+			puts 'Sender was: ' + __sender__.pretty_inspect.to_s
+			puts 'Caller was: ' + __caller__.to_s
+		end
+
+	end
+
+	class Test2 < Test
+
+		def initialize
+			puts 'In method <Test2>:initialize'
+			super
+			puts 'Sender was: ' + __sender__.pretty_inspect.to_s
+			puts 'Caller was: ' + __caller__.to_s
+			pp Kernel.backtrace
+		end
+
+		def and_another_test_in_another_object
+			puts 'In method <Test2>:and_another_test_in_another_object'
+			super
+			pp self
+			puts 'Sender was: ' + __sender__.pretty_inspect.to_s
+			puts 'Caller was: ' + __caller__.to_s
+			pp Kernel.backtrace		
+			pp Kernel.backtrace( 2 )
+			puts 'These should be true:'
+			pp Kernel.backtrace_includes?( :another_test )
+			pp Kernel.backtrace_includes?( Test )
+			pp Kernel.backtrace_includes?( $test )
+			pp Kernel.backtrace_includes?( :another_test, Test, $test )
+			pp Kernel.backtrace_includes?( "sender_test.rb" )
+			puts 'These should be false:'
+			pp Kernel.backtrace_includes?( :yet_another_test )
+			pp Kernel.backtrace_includes?( Test2 )
+			pp Kernel.backtrace_includes?( self )
+			pp Kernel.backtrace_includes?( :yet_another_test, Test2, self )
+			pp Kernel.backtrace_includes?( "sender_test.rbi" )
+
+			puts 'And now we get a step by step backtrace'
+			which_step = 1
+			Kernel.each_backtrace_frame do |this_frame|
+				puts 'Frame number ' + which_step.to_s + ':'
+				pp this_frame
+				which_step += 1
+			end
+			puts 'And now we try a backtrace inside a block.'
+			block_item = [ 'one_item' ]
+			block_item.each do |this_item|
+				pp Kernel.backtrace
+			end
+
+			puts 'And :backtrace_includes_one_of?; this should be true:'
+			pp Kernel.backtrace_includes_one_of?( :some_method_that_does_not_exit, :another_test, :test, :some_other_test_that_does_not_exist )
+			puts 'as should this:'
+			pp Kernel.backtrace_includes_one_of?( { :method => :another_test, :object => $test }, { :method => :test } )
+
+			puts 'And :backtrace_frame_with; this should be a Hash:'
+			pp Kernel.backtrace_frame_with( :test )
+			puts 'as should this:'
+			pp Kernel.backtrace_frame_with( "sender_test.rb" )
+
+			puts 'And :backtrace_frames_with; this should be an Array of Hashes'
+			pp Kernel.backtrace_frames_with( :object => $test )
+			puts 'as should this:'
+			pp Kernel.backtrace_frames_with( :file => "sender_test.rb" )
+
+		    puts 'And try iterating with an Enumerator'
+		    enumerator = Kernel.each_backtrace_frame
+		    pp enumerator
+		    while result = enumerator.next
+		      pp result
+		    end
+
+		end
+	end
+
+== EXAMPLE's OUTPUT:
+	
+	In method <Test>:initialize
+	Sender was: main
+	Caller was: <main>
+	In <Test>:test
+	In method <Test>:another_test
+	In method <Test2>:initialize
+	In method <Test>:initialize
+	Sender was: #<Test:0x0000010081ba10>
+	Caller was: another_test
+	Sender was: #<Test:0x0000010081ba10>
+	Caller was: another_test
+	[{:object=>#<Test2:0x0000010081a7e8>,
+		:file=>"sender_test.rb",
+		:line=>39,
+		:method=>:initialize},
+	 {:object=>Test2, :file=>nil, :line=>nil, :method=>:new},
+	 {:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>20,
+		:method=>:another_test},
+	 {:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>15,
+		:method=>:test},
+	 {:object=>main, :file=>"sender_test.rb", :line=>96, :method=>:"<main>"},
+	 {:object=>main, :file=>"<main>", :line=>0, :method=>:"<main>"}]
+	In method <Test2>:and_another_test_in_another_object
+	In method <Test>:and_another_test_in_another_object
+	Sender was: #<Test2:0x0000010081a7e8>
+	Caller was: another_test
+	#<Test2:0x0000010081a7e8>
+	Sender was: #<Test:0x0000010081ba10>
+	Caller was: another_test
+	[{:object=>#<Test2:0x0000010081a7e8>,
+		:file=>"sender_test.rb",
+		:line=>48,
+		:method=>:and_another_test_in_another_object},
+	 {:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>21,
+		:method=>:another_test},
+	 {:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>15,
+		:method=>:test},
+	 {:object=>main, :file=>"sender_test.rb", :line=>96, :method=>:"<main>"},
+	 {:object=>main, :file=>"<main>", :line=>0, :method=>:"<main>"}]
+	[{:object=>#<Test2:0x0000010081a7e8>,
+		:file=>"sender_test.rb",
+		:line=>49,
+		:method=>:and_another_test_in_another_object},
+	 {:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>21,
+		:method=>:another_test}]
+	These should be true:
+	true
+	true
+	true
+	true
+	true
+	These should be false:
+	false
+	false
+	false
+	false
+	false
+	And now we get a step by step backtrace
+	Frame number 1:
+	{:object=>#<Test:0x0000010081ba10>,
+	 :file=>"sender_test.rb",
+	 :line=>21,
+	 :method=>:another_test}
+	Frame number 2:
+	{:object=>#<Test:0x0000010081ba10>,
+	 :file=>"sender_test.rb",
+	 :line=>15,
+	 :method=>:test}
+	Frame number 3:
+	{:object=>main, :file=>"sender_test.rb", :line=>96, :method=>:"<main>"}
+	Frame number 4:
+	{:object=>main, :file=>"<main>", :line=>0, :method=>:"<main>"}
+	And now we try a backtrace inside a block.
+	[{:object=>#<Test2:0x0000010081a7e8>,
+		:file=>"sender_test.rb",
+		:line=>73,
+		:method=>:"block in and_another_test_in_another_object"},
+	 {:object=>["one_item"], :file=>nil, :line=>nil, :method=>:each},
+	 {:object=>#<Test2:0x0000010081a7e8>,
+		:file=>"sender_test.rb",
+		:line=>72,
+		:method=>:and_another_test_in_another_object},
+	 {:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>21,
+		:method=>:another_test},
+	 {:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>15,
+		:method=>:test},
+	 {:object=>main, :file=>"sender_test.rb", :line=>96, :method=>:"<main>"},
+	 {:object=>main, :file=>"<main>", :line=>0, :method=>:"<main>"}]
+	And :backtrace_includes_one_of?; this should be true:
+	true
+	as should this:
+	true
+	And :backtrace_frame_with; this should be a Hash:
+	{:object=>#<Test:0x0000010081ba10>,
+	 :file=>"sender_test.rb",
+	 :line=>15,
+	 :method=>:test}
+	as should this:
+	{:object=>#<Test:0x0000010081ba10>,
+	 :file=>"sender_test.rb",
+	 :line=>21,
+	 :method=>:another_test}
+	And :backtrace_frames_with; this should be an Array of Hashes
+	[{:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>21,
+		:method=>:another_test},
+	 {:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>15,
+		:method=>:test}]
+	as should this:
+	[{:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>21,
+		:method=>:another_test},
+	 {:object=>#<Test:0x0000010081ba10>,
+		:file=>"sender_test.rb",
+		:line=>15,
+		:method=>:test},
+	 {:object=>main, :file=>"sender_test.rb", :line=>96, :method=>:"<main>"}]
+	And try iterating with an Enumerator
+	#<Enumerator:0x000001010480e0>
+	{:object=>#<Test2:0x0000010081a388>,
+	 :file=>"sender_test.rb",
+	 :line=>92,
+	 :method=>:and_another_test_in_another_object}
+	{:object=>#<Test:0x0000010081b770>,
+	 :file=>"sender_test.rb",
+	 :line=>21,
+	 :method=>:another_test}
+	{:object=>#<Test:0x0000010081b770>,
+	 :file=>"sender_test.rb",
+	 :line=>15,
+	 :method=>:test}
+	{:object=>main, :file=>"sender_test.rb", :line=>103, :method=>:"<main>"}
+	{:object=>main, :file=>"<main>", :line=>0, :method=>:"<main>"}
+	sender_test.rb:94:in `next': iteration reached at end (StopIteration)
+		from sender_test.rb:94:in `and_another_test_in_another_object'
+		from sender_test.rb:21:in `another_test'
+		from sender_test.rb:15:in `test'
+		from sender_test.rb:103:in `<main>'
+	Finished Test.
+
+== LICENSE:
+
+	(The MIT License)
+
+	Copyright (c) 2010 Asher
+
+	Permission is hereby granted, free of charge, to any person obtaining
+	a copy of this software and associated documentation files (the
+	'Software'), to deal in the Software without restriction, including
+	without limitation the rights to use, copy, modify, merge, publish,
+	distribute, sublicense, and/or sell copies of the Software, and to
+	permit persons to whom the Software is furnished to do so, subject to
+	the following conditions:
+
+	The above copyright notice and this permission notice shall be
+	included in all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
