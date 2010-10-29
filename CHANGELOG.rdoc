@@ -70,3 +70,7 @@ Updated for 1.9.2p0
 Fixed dependencies (hopefully).
 Changed from ruby_core_source gem to core-source gem
 Changed from mkmf to mkmfmf gem
+
+=== 1.5.5-6 2010-10-28
+
+Fixed dependencies. Everything should _actually_ install properly now. 
