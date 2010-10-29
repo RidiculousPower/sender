@@ -13,8 +13,8 @@ Gem::Specification.new do |spec|
   spec.email                     =  'asher@ridiculouspower.com'
   spec.homepage                  =  'http://rubygems.org/gems/sender'
   
-  spec.add_dependency(              'core-source', '>= 0.1' )
-  spec.add_dependency(              'mkmfmf', '>= 0.1' )
+  spec.add_dependency               'core-source', '>=0.1'
+  spec.add_dependency               'mkmfmf', '>=0.1'
 
   spec.date                      =  Date.today.to_s
   
