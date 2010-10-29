@@ -1,3 +1,4 @@
+require 'date'
 
 Gem::Specification.new do |spec|
 
@@ -13,13 +14,17 @@ Gem::Specification.new do |spec|
   spec.homepage                  =  'http://rubygems.org/gems/sender'
   
   spec.add_dependency(              'core-source', '>= 0.1' )
+  spec.add_dependency(              'mkmfmf', '>= 0.1' )
 
   spec.date                      =  Date.today.to_s
   
+  spec.extensions                << 'ext/sender/extconf.rb'
+  
   # ensure the gem is built out of versioned files
-  spec.files                     = Dir[ '{bin,lib,man,test,spec}/**/*',
-                                        'Rakefile', 
+  # also make sure we include the bundle since we exclude it from git storage
+  spec.files                     = Dir[ 'install.rb',
+                                        '{lib,spec}/**/*',
                                         'README*', 
-                                        'LICENSE*'] & `git ls-files -z`.split("\0")
+                                        'LICENSE*' ] & `git ls-files -z`.split("\0")
 
 end
