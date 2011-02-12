@@ -74,3 +74,11 @@ Changed from mkmf to mkmfmf gem
 === 1.5.5-6 2010-10-28
 
 Fixed dependencies. Everything should _actually_ install properly now. 
+
+=== 1.5.7 2010-??-??
+
+Made a mess.
+
+=== 1.5.8 2010-10-28
+
+Fixed mess somehow created in 1.5.7. Gem should install cleanly.
