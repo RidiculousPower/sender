@@ -23,9 +23,8 @@ Gem::Specification.new do |spec|
   
   # ensure the gem is built out of versioned files
   # also make sure we include the bundle since we exclude it from git storage
-  spec.files                     = Dir[ 'install.rb',
-                                        '{lib,spec}/**/*',
-                                        'README*', 
+  spec.files                     = Dir[ '{lib,spec,ext,test}/**/*',
+																				'README*', 
                                         'LICENSE*' ] & `git ls-files -z`.split("\0")
 
 end
