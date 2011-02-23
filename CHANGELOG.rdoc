@@ -79,6 +79,10 @@ Fixed dependencies. Everything should _actually_ install properly now.
 
 Made a mess.
 
-=== 1.5.8 2010-10-28
+=== 1.5.8 2010-2-11
 
 Fixed mess somehow created in 1.5.7. Gem should install cleanly.
+
+=== 1.5.9 2011-2-23
+
+Fixed default CFLAGS for gcc.
