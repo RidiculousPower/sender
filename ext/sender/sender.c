@@ -3,14 +3,14 @@
 #include "rb_Kernel.h"
 
 /*************
-*	 Init	 *
+*   Init   *
 *************/
 
-//	Called from ruby when RPBDB module is initialized
-void Init_sender()	{
+//  Called from ruby when RPBDB module is initialized
+void Init_sender()  {
 
-	Init_senderGlobal();
-	Init_senderKernel();
-	
+  Init_senderGlobal();
+  Init_senderKernel();
+  
 }
 
