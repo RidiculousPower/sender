@@ -64,7 +64,7 @@ VALUE rb_RPRuby_Sender_Kernel_backtrace(  int    argc,
     
   }
   
-  rb_thread_t*      c_thread          = GET_THREAD();
+  rb_thread_t*      c_thread          = (rb_thread_t *)RTYPEDDATA_DATA(rb_thread_current());
   //  Get the current frame - we're doing a backtrace, so our current working frame to start is the first previous thread
   rb_control_frame_t*    c_current_context_frame    = RUBY_VM_PREVIOUS_CONTROL_FRAME( c_thread->cfp );
   
@@ -113,7 +113,7 @@ VALUE rb_RPRuby_Sender_Kernel_each_backtrace_frame(  int    argc,
                           VALUE*  args,
                           VALUE  rb_self )  {
 
-  rb_thread_t*      c_thread          = GET_THREAD();
+  rb_thread_t*      c_thread          = (rb_thread_t *)RTYPEDDATA_DATA(rb_thread_current());
   //  Get the current frame - we're doing a backtrace, so our current working frame to start is the first previous thread
   rb_control_frame_t*    c_current_context_frame    = RUBY_VM_PREVIOUS_CONTROL_FRAME( RUBY_VM_PREVIOUS_CONTROL_FRAME( c_thread->cfp ) );
   
@@ -225,7 +225,7 @@ VALUE rb_RPRuby_Sender_Kernel_backtrace_includes(  int    argc,
             args[ c_which_arg ] );
   }
     
-  rb_thread_t*      c_thread          = GET_THREAD();
+  rb_thread_t*      c_thread          = (rb_thread_t *)RTYPEDDATA_DATA(rb_thread_current());
   //  Get the current frame - we're doing a backtrace, so our current working frame to start is the first previous thread
   rb_control_frame_t*    c_current_context_frame    = RUBY_VM_PREVIOUS_CONTROL_FRAME( RUBY_VM_PREVIOUS_CONTROL_FRAME( c_thread->cfp ) );
   
