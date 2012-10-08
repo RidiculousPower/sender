@@ -86,3 +86,7 @@ Fixed mess somehow created in 1.5.7. Gem should install cleanly.
 === 1.5.9 2011-2-23
 
 Fixed default CFLAGS for gcc.
+
+=== 1.5.10 2012-10-8
+
+Fix for "Symbol not found: _ruby_current_thread".
