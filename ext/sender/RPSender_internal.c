@@ -8,7 +8,7 @@
 
 rb_control_frame_t* RPRuby_internal_framePriorTo( rb_control_frame_t* c_control_frame )  {
   
-  rb_thread_t*      c_thread          = GET_THREAD();
+  rb_thread_t*      c_thread          = (rb_thread_t *)RTYPEDDATA_DATA(rb_thread_current());
   rb_control_frame_t*    c_prior_control_frame    = NULL;
   //  get the current frame pointer
   if ( c_control_frame == NULL )  {
